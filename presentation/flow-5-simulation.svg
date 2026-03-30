@@ -1,0 +1,115 @@
+<svg width="680" height="520" viewBox="0 0 680 520" xmlns="http://www.w3.org/2000/svg">
+<rect width="680" height="520" fill="#0f0f1a" rx="12"/>
+<defs>
+<marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+<path d="M1 1L9 5L1 9" fill="none" stroke="#fbbf24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+<marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+<path d="M1 1L9 5L1 9" fill="none" stroke="#86efac" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+<marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+<path d="M1 1L9 5L1 9" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+
+<!-- Title -->
+<text x="340" y="30" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#a78bfa">Client-Side Projectile Simulation</text>
+<text x="340" y="50" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#86efac">Deterministic motion — no NetworkTransform needed</text>
+
+<!-- Actors -->
+<!-- Host Client: center 110 -->
+<rect x="30" y="64" width="160" height="36" rx="6" fill="#12122a" stroke="#7dd3fc" stroke-width="1.5"/>
+<text x="110" y="82" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="600" fill="#7dd3fc">Host Client</text>
+<text x="110" y="95" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#7dd3fc">RTT = 0ms</text>
+
+<!-- Server: center 340 -->
+<rect x="260" y="64" width="160" height="36" rx="6" fill="#12122a" stroke="#a78bfa" stroke-width="1.5"/>
+<text x="340" y="82" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="600" fill="#a78bfa">Server</text>
+<text x="340" y="95" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#a78bfa">authority + collision</text>
+
+<!-- Remote Client: center 570 -->
+<rect x="480" y="64" width="170" height="36" rx="6" fill="#12122a" stroke="#86efac" stroke-width="1.5"/>
+<text x="565" y="82" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="600" fill="#86efac">Remote Client</text>
+<text x="565" y="95" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#86efac">RTT = 100ms</text>
+
+<!-- Lifelines -->
+<line x1="110" y1="100" x2="110" y2="490" stroke="#252550" stroke-width="1.5" stroke-dasharray="6 4"/>
+<line x1="340" y1="100" x2="340" y2="490" stroke="#252550" stroke-width="1.5" stroke-dasharray="6 4"/>
+<line x1="565" y1="100" x2="565" y2="490" stroke="#252550" stroke-width="1.5" stroke-dasharray="6 4"/>
+
+<!-- Time labels -->
+<text x="22" y="147" text-anchor="end" font-family="monospace" font-size="10" fill="#555">t=10.40</text>
+<text x="22" y="237" text-anchor="end" font-family="monospace" font-size="10" fill="#555">t=10.40</text>
+<text x="22" y="297" text-anchor="end" font-family="monospace" font-size="10" fill="#555">t=10.45</text>
+<text x="22" y="397" text-anchor="end" font-family="monospace" font-size="10" fill="#555">ongoing</text>
+<text x="22" y="467" text-anchor="end" font-family="monospace" font-size="10" fill="#555">on hit</text>
+
+<!-- Guides -->
+<line x1="26" y1="144" x2="650" y2="144" stroke="#1a1a2e" stroke-width="1"/>
+<line x1="26" y1="234" x2="650" y2="234" stroke="#1a1a2e" stroke-width="1"/>
+<line x1="26" y1="294" x2="650" y2="294" stroke="#1a1a2e" stroke-width="1"/>
+<line x1="26" y1="394" x2="650" y2="394" stroke="#1a1a2e" stroke-width="1"/>
+<line x1="26" y1="464" x2="650" y2="464" stroke="#1a1a2e" stroke-width="1"/>
+
+<!-- Event 1: Server spawns projectile + fires ClientRpc -->
+<rect x="238" y="128" width="204" height="30" rx="5" fill="#150e28" stroke="#a78bfa" stroke-width="2"/>
+<text x="340" y="143" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" font-weight="700" fill="#a78bfa">projectile spawned + Fire()</text>
+<text x="340" y="155" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#a78bfa">InitializeClientRpc(pos, dir, spawnTime=10.40)</text>
+
+<!-- Server active bar (simulating authoritatively) -->
+<rect x="334" y="158" width="12" height="306" rx="3" fill="#a78bfa" opacity="0.2"/>
+<text x="358" y="310" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#a78bfa" opacity="0.7">server simulates</text>
+<text x="358" y="320" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#a78bfa" opacity="0.7">authoritative</text>
+
+<!-- Arrows: InitializeClientRpc to both clients -->
+<!-- Host receives instantly (RTT=0) -->
+<line x1="340" y1="158" x2="110" y2="234" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="220" y="186" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#fbbf24">InitializeClientRpc</text>
+<text x="220" y="197" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#fbbf24">(≈0ms travel)</text>
+
+<!-- Remote receives after 50ms -->
+<line x1="340" y1="158" x2="565" y2="294" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="460" y="210" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#fbbf24">InitializeClientRpc</text>
+<text x="460" y="221" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#fbbf24">(+50ms travel)</text>
+
+<!-- Event 2a: Host client receives (elapsed≈0) -->
+<rect x="28" y="222" width="164" height="38" rx="5" fill="#0d2a1a" stroke="#7dd3fc" stroke-width="1.5"/>
+<text x="110" y="237" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="11" font-weight="600" fill="#7dd3fc">receives RPC</text>
+<text x="110" y="249" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#7dd3fc">elapsed = 10.40 − 10.40 = 0s</text>
+<text x="110" y="258" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#7dd3fc">no fast-forward needed</text>
+
+<!-- Event 2b: Remote receives (elapsed=0.05) -->
+<rect x="457" y="280" width="216" height="40" rx="5" fill="#0d2a1a" stroke="#86efac" stroke-width="1.5"/>
+<text x="565" y="295" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="11" font-weight="600" fill="#86efac">receives RPC</text>
+<text x="565" y="307" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#86efac">elapsed = 10.45 − 10.40 = 0.05s</text>
+<text x="565" y="316" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#86efac">pos += dir × speed × 0.05 ← fast-forward</text>
+
+<!-- Event 3: Both simulate locally (smooth) -->
+<!-- Host simulation bar -->
+<rect x="104" y="260" width="12" height="134" rx="3" fill="#7dd3fc" opacity="0.25"/>
+<rect x="104" y="260" width="12" height="134" rx="3" fill="none" stroke="#7dd3fc" stroke-width="0.5"/>
+<!-- Remote simulation bar -->
+<rect x="559" y="320" width="12" height="74" rx="3" fill="#86efac" opacity="0.25"/>
+<rect x="559" y="320" width="12" height="74" rx="3" fill="none" stroke="#86efac" stroke-width="0.5"/>
+
+<!-- Labels for simulation bars -->
+<text x="90" y="338" text-anchor="end" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#7dd3fc">smooth</text>
+<text x="90" y="348" text-anchor="end" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#7dd3fc">local sim</text>
+<text x="581" y="358" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#86efac">smooth</text>
+<text x="581" y="368" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#86efac">local sim</text>
+
+<!-- Event 4: Server collision / Despawn -->
+<rect x="238" y="452" width="204" height="28" rx="5" fill="#150e28" stroke="#a78bfa" stroke-width="2"/>
+<text x="340" y="466" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="11" font-weight="700" fill="#a78bfa">collision → Despawn()</text>
+<text x="340" y="477" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#a78bfa">server-authoritative hit detection</text>
+
+<!-- Arrows: OnNetworkDespawn to clients for impact VFX -->
+<line x1="340" y1="452" x2="110" y2="484" stroke="#7dd3fc" stroke-width="1" stroke-dasharray="3 2" marker-end="url(#ab)"/>
+<line x1="340" y1="452" x2="565" y2="484" stroke="#86efac" stroke-width="1" stroke-dasharray="3 2" marker-end="url(#ag)"/>
+
+<!-- Impact VFX boxes -->
+<rect x="28" y="477" width="164" height="22" rx="4" fill="#0d1f30" stroke="#7dd3fc" stroke-width="1"/>
+<text x="110" y="492" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#7dd3fc">OnNetworkDespawn → impact VFX</text>
+<rect x="457" y="477" width="216" height="22" rx="4" fill="#0d2a1a" stroke="#86efac" stroke-width="1"/>
+<text x="565" y="492" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#86efac">OnNetworkDespawn → impact VFX</text>
+</svg>

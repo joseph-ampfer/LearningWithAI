@@ -1,0 +1,103 @@
+<svg width="680" height="540" viewBox="0 0 680 540" xmlns="http://www.w3.org/2000/svg">
+<rect width="680" height="540" fill="#0f0f1a" rx="12"/>
+<defs>
+<marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+<path d="M1 1L9 5L1 9" fill="none" stroke="#fbbf24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+<marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+<path d="M1 1L9 5L1 9" fill="none" stroke="#86efac" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+
+<!-- Title -->
+<text x="340" y="30" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#a78bfa">Full Spell Cast Timeline</text>
+<text x="340" y="50" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#86efac">With action anticipation — all clocks in ServerTime</text>
+
+<!-- Actors -->
+<!-- Owner Client: center 140 -->
+<rect x="60" y="64" width="160" height="36" rx="6" fill="#12122a" stroke="#7dd3fc" stroke-width="1.5"/>
+<text x="140" y="82" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="600" fill="#7dd3fc">Owner (local)</text>
+<text x="140" y="95" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#7dd3fc">RTT = 0.1s</text>
+
+<!-- Server: center 340 -->
+<rect x="260" y="64" width="160" height="36" rx="6" fill="#12122a" stroke="#a78bfa" stroke-width="1.5"/>
+<text x="340" y="82" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="600" fill="#a78bfa">Server</text>
+<text x="340" y="95" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#a78bfa">(authoritative)</text>
+
+<!-- Remote Client: center 560 -->
+<rect x="460" y="64" width="180" height="36" rx="6" fill="#12122a" stroke="#86efac" stroke-width="1.5"/>
+<text x="550" y="82" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="600" fill="#86efac">Remote Client</text>
+<text x="550" y="95" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#86efac">RTT = 0.1s</text>
+
+<!-- Lifelines -->
+<line x1="140" y1="100" x2="140" y2="510" stroke="#252550" stroke-width="1.5" stroke-dasharray="6 4"/>
+<line x1="340" y1="100" x2="340" y2="510" stroke="#252550" stroke-width="1.5" stroke-dasharray="6 4"/>
+<line x1="550" y1="100" x2="550" y2="510" stroke="#252550" stroke-width="1.5" stroke-dasharray="6 4"/>
+
+<!-- Time labels -->
+<text x="46" y="147" text-anchor="end" font-family="monospace" font-size="11" fill="#555">t=10.00</text>
+<text x="46" y="237" text-anchor="end" font-family="monospace" font-size="11" fill="#555">t=10.05</text>
+<text x="46" y="327" text-anchor="end" font-family="monospace" font-size="11" fill="#555">t=10.10</text>
+<text x="46" y="427" text-anchor="end" font-family="monospace" font-size="11" fill="#555">t=10.40</text>
+<text x="46" y="497" text-anchor="end" font-family="monospace" font-size="11" fill="#555">t=10.45</text>
+
+<!-- Horizontal guides -->
+<line x1="50" y1="144" x2="650" y2="144" stroke="#1a1a2e" stroke-width="1"/>
+<line x1="50" y1="234" x2="650" y2="234" stroke="#1a1a2e" stroke-width="1"/>
+<line x1="50" y1="324" x2="650" y2="324" stroke="#1a1a2e" stroke-width="1"/>
+<line x1="50" y1="424" x2="650" y2="424" stroke="#1a1a2e" stroke-width="1"/>
+<line x1="50" y1="494" x2="650" y2="494" stroke="#1a1a2e" stroke-width="1"/>
+
+<!-- Event 1: Owner presses F + animation IMMEDIATELY -->
+<rect x="58" y="128" width="164" height="30" rx="5" fill="#0d2a1a" stroke="#86efac" stroke-width="2"/>
+<text x="140" y="143" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="11" font-weight="700" fill="#86efac">✓ animation starts instantly</text>
+<text x="140" y="154" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#86efac">LocalTime = 10.00 sent in RPC</text>
+
+<!-- Arrow 1: Owner → Server -->
+<line x1="140" y1="159" x2="340" y2="234" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="240" y="190" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#fbbf24">TrySpellServerRPC(castTime=10.00)</text>
+<text x="240" y="202" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#fbbf24">+50ms travel</text>
+
+<!-- Event 2: Server receives + validates -->
+<rect x="238" y="234" width="204" height="28" rx="5" fill="#150e28" stroke="#a78bfa" stroke-width="1"/>
+<text x="340" y="248" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#a78bfa">validates. CastStartTime = 10.00</text>
+<text x="340" y="259" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#a78bfa">ServerTime ≈ 10.05</text>
+
+<!-- Server active bar -->
+<rect x="334" y="262" width="12" height="158" rx="3" fill="#a78bfa" opacity="0.25"/>
+
+<!-- Arrows: PlayAnimClientRPC to both clients -->
+<line x1="340" y1="262" x2="140" y2="324" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4 2" marker-end="url(#a)"/>
+<line x1="340" y1="262" x2="550" y2="324" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="240" y="286" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#fbbf24">PlayAnimClientRPC</text>
+<text x="450" y="286" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#fbbf24">PlayAnimClientRPC</text>
+
+<!-- Event 3a: Owner receives (IsOwner=true, SKIPS) -->
+<rect x="58" y="316" width="164" height="28" rx="5" fill="#1a1a2e" stroke="#555" stroke-width="1"/>
+<text x="140" y="330" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#888">IsOwner = true → skip</text>
+<text x="140" y="341" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#666">(already animating)</text>
+
+<!-- Event 3b: Remote receives + fast-forwards -->
+<rect x="452" y="316" width="196" height="30" rx="5" fill="#0d2a1a" stroke="#86efac" stroke-width="1.5"/>
+<text x="550" y="330" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" font-weight="600" fill="#86efac">CrossFadeInFixedTime()</text>
+<text x="550" y="342" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#86efac">offset = 10.10 − 10.00 = 0.10s seek</text>
+
+<!-- Remote simulation bar -->
+<rect x="544" y="346" width="12" height="78" rx="3" fill="#86efac" opacity="0.2"/>
+
+<!-- Event 4: Server spawns projectile -->
+<rect x="238" y="418" width="204" height="28" rx="5" fill="#150e28" stroke="#a78bfa" stroke-width="2"/>
+<text x="340" y="432" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" font-weight="700" fill="#a78bfa">projectile spawns</text>
+<text x="340" y="444" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#a78bfa">ServerTime(10.05) ≥ castStart(10.00) + castDelay(0.4)</text>
+
+<!-- Arrows: clients see projectile NetworkObject -->
+<line x1="340" y1="448" x2="140" y2="486" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="340" y1="448" x2="550" y2="486" stroke="#86efac" stroke-width="1.5" marker-end="url(#ag)"/>
+
+<!-- Events 5: clients see projectile -->
+<rect x="60" y="480" width="160" height="22" rx="4" fill="#0d1f30" stroke="#7dd3fc" stroke-width="1"/>
+<text x="140" y="495" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#7dd3fc">NetworkObject visible</text>
+
+<rect x="454" y="480" width="192" height="22" rx="4" fill="#0d2a1a" stroke="#86efac" stroke-width="1"/>
+<text x="550" y="495" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#86efac">NetworkObject visible (+50ms)</text>
+</svg>

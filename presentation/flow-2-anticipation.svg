@@ -1,0 +1,115 @@
+<svg width="680" height="520" viewBox="0 0 680 520" xmlns="http://www.w3.org/2000/svg">
+<rect width="680" height="520" fill="#0f0f1a" rx="12"/>
+<defs>
+<marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+<path d="M1 1L9 5L1 9" fill="none" stroke="#fbbf24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+<marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+<path d="M1 1L9 5L1 9" fill="none" stroke="#86efac" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+
+<!-- Title -->
+<text x="340" y="30" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#e8e8f0">Action Anticipation</text>
+
+<!-- Column headers -->
+<rect x="20" y="44" width="300" height="30" rx="6" fill="#2a0f0f"/>
+<text x="170" y="64" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="700" fill="#f87171">❌  Without Anticipation</text>
+<rect x="360" y="44" width="300" height="30" rx="6" fill="#0d2a1a"/>
+<text x="510" y="64" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="700" fill="#86efac">✓  With Anticipation</text>
+
+<!-- Divider -->
+<line x1="340" y1="44" x2="340" y2="500" stroke="#252550" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+<!-- ===== LEFT SIDE — WITHOUT ===== -->
+<!-- Actors -->
+<rect x="30" y="84" width="130" height="32" rx="6" fill="#12122a" stroke="#7dd3fc" stroke-width="1.5"/>
+<text x="95" y="105" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="600" fill="#7dd3fc">Client</text>
+<rect x="190" y="84" width="130" height="32" rx="6" fill="#12122a" stroke="#a78bfa" stroke-width="1.5"/>
+<text x="255" y="105" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="600" fill="#a78bfa">Server</text>
+
+<!-- Left lifelines -->
+<line x1="95" y1="116" x2="95" y2="480" stroke="#252550" stroke-width="1.5" stroke-dasharray="6 4"/>
+<line x1="255" y1="116" x2="255" y2="480" stroke="#252550" stroke-width="1.5" stroke-dasharray="6 4"/>
+
+<!-- Left events -->
+<!-- 1: Press F -->
+<rect x="28" y="144" width="134" height="26" rx="5" fill="#0d1f30" stroke="#7dd3fc" stroke-width="1"/>
+<text x="95" y="161" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#7dd3fc">Player presses F</text>
+
+<!-- Arrow: Client→Server (bad) -->
+<line x1="95" y1="171" x2="255" y2="231" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#ab)"/>
+<text x="178" y="196" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#fbbf24">ServerRPC (+150ms)</text>
+
+<!-- 2: Server validates -->
+<rect x="186" y="231" width="138" height="26" rx="5" fill="#150e28" stroke="#a78bfa" stroke-width="1"/>
+<text x="255" y="248" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#a78bfa">validates → ClientRPC</text>
+
+<!-- Arrow: Server→Client (bad) -->
+<line x1="255" y1="258" x2="95" y2="318" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#ab)"/>
+<text x="178" y="282" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#fbbf24">PlayAnimRPC (+150ms)</text>
+
+<!-- 3: Animation LATE -->
+<rect x="22" y="318" width="146" height="26" rx="5" fill="#2a0f0f" stroke="#f87171" stroke-width="2"/>
+<text x="95" y="331" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" font-weight="700" fill="#f87171">⚠ animation starts</text>
+<text x="95" y="342" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#f87171">300ms after button press</text>
+
+<!-- Server active bar -->
+<rect x="249" y="258" width="12" height="160" rx="3" fill="#a78bfa" opacity="0.2"/>
+
+<!-- 4: Spawn -->
+<rect x="186" y="420" width="138" height="26" rx="5" fill="#150e28" stroke="#a78bfa" stroke-width="1"/>
+<text x="255" y="437" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#a78bfa">projectile spawns</text>
+
+<!-- Brace left -->
+<line x1="18" y1="157" x2="18" y2="344" stroke="#f87171" stroke-width="1.5"/>
+<line x1="14" y1="157" x2="22" y2="157" stroke="#f87171" stroke-width="1.5"/>
+<line x1="14" y1="344" x2="22" y2="344" stroke="#f87171" stroke-width="1.5"/>
+<text x="12" y="254" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#f87171" transform="rotate(-90 12 254)">300ms</text>
+
+<!-- ===== RIGHT SIDE — WITH ANTICIPATION ===== -->
+<!-- Actors -->
+<rect x="368" y="84" width="130" height="32" rx="6" fill="#12122a" stroke="#7dd3fc" stroke-width="1.5"/>
+<text x="433" y="105" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="600" fill="#7dd3fc">Client (owner)</text>
+<rect x="524" y="84" width="130" height="32" rx="6" fill="#12122a" stroke="#a78bfa" stroke-width="1.5"/>
+<text x="589" y="105" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="600" fill="#a78bfa">Server</text>
+
+<!-- Right lifelines -->
+<line x1="433" y1="116" x2="433" y2="480" stroke="#252550" stroke-width="1.5" stroke-dasharray="6 4"/>
+<line x1="589" y1="116" x2="589" y2="480" stroke="#252550" stroke-width="1.5" stroke-dasharray="6 4"/>
+
+<!-- 1: Press F + Immediate animation (GREEN) -->
+<rect x="362" y="144" width="142" height="26" rx="5" fill="#0d2a1a" stroke="#86efac" stroke-width="2"/>
+<text x="433" y="157" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" font-weight="700" fill="#86efac">✓ animation starts</text>
+<text x="433" y="168" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#86efac">instantly on button press</text>
+
+<!-- Arrow: Client→Server (background) -->
+<line x1="433" y1="171" x2="589" y2="231" stroke="#86efac" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#ag)"/>
+<text x="515" y="196" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#86efac">ServerRPC (background)</text>
+
+<!-- 2: Server validates -->
+<rect x="522" y="231" width="136" height="26" rx="5" fill="#150e28" stroke="#a78bfa" stroke-width="1"/>
+<text x="589" y="248" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#a78bfa">validates → ClientRPC</text>
+
+<!-- Arrow: Server→Client (fast-forward) -->
+<line x1="589" y1="258" x2="433" y2="308" stroke="#86efac" stroke-width="1.5" marker-end="url(#ag)"/>
+<text x="515" y="278" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#86efac">PlayAnimRPC + seek offset</text>
+
+<!-- 3: Remote syncs up -->
+<rect x="362" y="308" width="142" height="26" rx="5" fill="#0d2a1a" stroke="#86efac" stroke-width="1"/>
+<text x="433" y="325" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#86efac">remote client animates</text>
+<text x="433" y="336" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#86efac">(fast-forwarded to sync)</text>
+
+<!-- Server active bar -->
+<rect x="583" y="258" width="12" height="162" rx="3" fill="#a78bfa" opacity="0.2"/>
+
+<!-- 4: Spawn -->
+<rect x="522" y="420" width="136" height="26" rx="5" fill="#0d2a1a" stroke="#86efac" stroke-width="1.5"/>
+<text x="589" y="437" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="11" font-weight="600" fill="#86efac">projectile spawns ✓</text>
+
+<!-- Instant feedback brace right -->
+<line x1="658" y1="157" x2="658" y2="170" stroke="#86efac" stroke-width="1.5"/>
+<line x1="654" y1="157" x2="662" y2="157" stroke="#86efac" stroke-width="1.5"/>
+<line x1="654" y1="170" x2="662" y2="170" stroke="#86efac" stroke-width="1.5"/>
+<text x="664" y="167" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#86efac">instant!</text>
+</svg>
