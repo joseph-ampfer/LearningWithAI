@@ -80,5 +80,10 @@ Unity Netcode for GameObjects is Unity's official networking solution for multip
 
 | Date | Topic | What I Learned | AI Tool Used |
 |------|-------|----------------|--------------|
-| | | | |
+| 3-23 | Networking Fundamentals | Learned about latency in multiplayer games and strategies to hide it. Action Anticipation works well for my game: playing a sound/animation immediately on click (before server confirmation) hides the Round Trip Time of network messages. | |
+| 3-30 | Unity Netcode for GameObjects | Implemented action anticipation in Unity using timestamps. | |
+| 4-6 | Networking Fundamentals | Discovered my action anticipation implementation desynced with the client because of differences between local time and server time clocks. Learned about network clocks and concluded I don't really need anticipation for projectiles. | |
+| 4-13 | Software Architecture | Learned about state machines to manage Lobby UI complexity (Default, PublicSearch, Lobby, PrivateMatch). Built an `ILobbyState` interface with `enter()`/`exit()`, a state machine with `transitionTo()`, and a `UIController` context bag passed to each state. | |
+| 4-20 | Post-Processing Effects | Compared post-processing in Unity vs Unreal. Post-processing modifies the image after the scene is rendered but before display. Learned how chromatic aberration separates RGB channels and revisited box blur (averaging surrounding pixels, with edge/corner cases). | |
+| 4-23 | Unity Netcode for GameObjects | Learned synchronous scene loading via `NetworkManager.Singleton.SceneManager` so the server can switch scenes for all connected clients. Used the `OnSceneLoadedAll` callback to wait until every client finishes loading before starting the game. | |
 
