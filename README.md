@@ -6,7 +6,7 @@ This repository documents my learning journey using AI assistance as part of my 
 
 ---
 
-## Topic 1: Networking Fundamentals for Multiplayer Games
+## Topic 1: Networking Fundamentals for Multiplayer Games ([what I learned](./presentation/topic-1-networking-fundamentals.pdf))
 
 ### Why I Need to Learn This
 
@@ -29,7 +29,7 @@ My capstone project is transitioning from a single-player experience to a multip
 
 ---
 
-## Topic 2: Unity Netcode for GameObjects
+## Topic 2: Unity Netcode for GameObjects ([what I learned](./presentation/topic-2-unity-netcode-for-gameobjects.pdf))
 
 ### Why I Need to Learn This
 
