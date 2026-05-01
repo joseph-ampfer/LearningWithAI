@@ -64,6 +64,17 @@ Unity Netcode for GameObjects is Unity's official networking solution for multip
 
 ---
 
+## Laymens Summary of What I Actually Learned This Semester
+I learned the differences and tradeoffs between a dedicated server multiplayer vs p2p. Dedicated server is expensive, but is very useful to prevent cheating. It is also useful that you can have dedicated servers all over the world to minimize latency. P2p and host-client model let's you have multiplayer for free, because a players computer becomes the server. The downside is that the host can have an advantage, and the is more prone to cheating since it is running on the hosts computer.
+
+I learned about remote procedure calls, and that they can be used to call functions on the server or clients machines. They are useful to sync events in multiplayer, and have the server authority update the clients on what happened.
+
+I learned techniques for hiding network latency, like action anticipation. Instead of asking the server if I can cast a spell, then the server responding to start the animation, I can start the animation first in anticipation of what the server will respond. This allows the client to see immediate feedback, while still using the server as the authority.
+
+I learned state synchronization is basically having to duplicate all important things in your game across every connected device. So if player one spawns in a frog, you have to duplicate that frog on the other players computer (let the computer know to spawn it and where). Sometimes this is just with variables, like health for example. Every computer should know the opponents health, but how does this happen? Through rpc's maybe, or network variables in unity's case. So if the variable changes on one, everyone else gets notified and duplicates that state so their local game can see it / react (like ui).
+
+---
+
 ## Repository Structure
 
 ```
